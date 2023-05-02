@@ -2,4 +2,4 @@
 
 |class  |link |
 | ------------- | ------------- |
-| 1 | [Array Reverse ](./ch1./README.md) |
+| 1 | [Array Reverse ](./ch1/README.md) |
