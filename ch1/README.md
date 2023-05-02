@@ -3,7 +3,7 @@
 Create function called reverseArray which takes an array as an argument. Without utilizing any of the built-in methods available in python language, return an array with elements in reversed order.
 
 #Whiteboard
-![code Challenge 01](./Untitled.jpg "reversArray")
+![whit.png](./ehit.png.png "reversArray")
 
 ## Approach & Efficiency
 1- Calculate the length n of the input array arr.
