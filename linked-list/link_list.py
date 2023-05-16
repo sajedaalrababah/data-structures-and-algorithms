@@ -88,4 +88,44 @@ class LinkedList:
         previous_node.next = current_node.next
         current_node = None
 
-        
+
+    def kth_from_end(self, k):
+        if k <= 0:
+            return None
+
+        # Get the length of the linked list
+        length = 0
+        current = self.head
+        while current:
+            length += 1
+            current = current.next
+
+        if k > length:
+            return None
+
+        # Calculate the position of the kth node from the beginning
+        position = length - k
+
+        # Traverse the linked list to find the kth node from the beginning
+        current = self.head
+        for i in range(position):
+            current = current.next
+
+        return current.value
+
+def find_middle(self):
+        if not self.head:
+            return None
+
+        slow = self.head
+        fast = self.head
+
+        # Traverse the linked list using two pointers,
+        # one moving at half the speed of the other.
+        # When the fast pointer reaches the end of the
+        # list, the slow pointer will be at the middle node.
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow.value      

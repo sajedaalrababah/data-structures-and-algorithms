@@ -25,3 +25,16 @@ arguments: value, new value adds a new node with the given new value immediately
 # WhiteBoard
 
 ![LinkedLists_WhiteBoard.png](./LinkedLists_WhiteBoard.png)
+
+
+
+
+# class 07
+
+kth from end
+
+arguments: k returns the node’s value that is k places from the tail of the linked list.
+
+You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges.
+
+![WhiteBoard2.png](./WhiteBoard2.png)
