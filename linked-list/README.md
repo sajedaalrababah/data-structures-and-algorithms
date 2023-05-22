@@ -38,3 +38,13 @@ arguments: k returns the node’s value that is k places from the tail of the li
 You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges.
 
 ![WhiteBoard2.png](./WhiteBoard2.png)
+
+
+
+# class 8
+
+zip lists
+
+arguments: 2 linked lists returns a linked list with the two linked lists zipped together into one so that the nodes alternate between the two lists and return a reference to the head of the zipped list.
+
+![WhiteBoard3.png](./WhiteBoard3.png)
