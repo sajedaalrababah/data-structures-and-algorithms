@@ -1,7 +1,9 @@
- ## Stack and a Queue Implementation
+## Stack and a Queue Implementation
 
 Approach
+
 # Stack methods
+
 push
 
 arguments: value adds a new node with that value to the top of the stack with an O(1) Time performance.
@@ -19,6 +21,7 @@ is_empty
 arguments: none returns: Boolean indicating whether or not the stack is empty.
 
 # Queue methods
+
 enqueue
 
 arguments: value adds a new node with that value to the back of the queue with an O(1) Time performance.
@@ -34,3 +37,11 @@ arguments: none Returns: Value of the node located at the front of the queue Sho
 is_empty
 
 arguments: none returns: Boolean indicating whether or not the queue is empty.
+
+# Pseudo Queue 
+
+Implement a Queue using two Stacks.
+
+## Whiteboard Process
+
+![stack_and_queue_Pseudo_WhiteBoard.png](/stack_and_queue_Pseudo_WhiteBoard.png)
