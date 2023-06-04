@@ -1,3 +1,45 @@
+class Node:
+    def __init__(self, data):
+        self.data = data  
+        self.next = None  
+  
+
+
+class Queue:
+    def __init__(self): 
+        self.front = None
+        self.back = None
+
+    def is_empty(self):
+        return self.front == None
+
+    def __enqueue_single(self, data):
+        new_node = Node(data)
+        if self.is_empty():
+            self.back = new_node
+            self.front = self.back
+            return
+        self.back.next=new_node
+        self.back = self.back.next
+
+    def enqueue(self, data):
+        if hasattr(data, '__len__'):
+            for element in data:
+                self.__enqueue_single(element)
+        else:
+            self.__enqueue_single(data)
+
+    def peek(self):
+        if self.is_empty():
+            raise Exception("queue is empty!")
+        return self.front.data
+    
+    def dequeue(self):
+        temp = self.peek()
+        self.front = self.front.next
+        return temp
+
+
 class Animal:
     def __init__(self, species, name):
         self.species = species
@@ -6,61 +48,28 @@ class Animal:
 
 class AnimalShelter:
     def __init__(self):
-       
-        self.dog_queue = []
-        self.cat_queue = []
-        self.timestamp = 0
+        self.queue = Queue()
 
     def enqueue(self, animal):
-       
-        animal.timestamp = self.timestamp
-        self.timestamp += 1
-
-        if animal.species == "dog":
-            self.dog_queue.append(animal)
-        elif animal.species == "cat":
-            self.cat_queue.append(animal)
+        if isinstance(animal, Animal):
+            self.queue.enqueue(animal)
+        else:
+            raise TypeError("Invalid animal object.")
 
     def dequeue(self, pref):
-       
-        if self.dog_queue:
-            return self.dog_queue.pop(0)
-        elif self.cat_queue:
-            return self.cat_queue.pop(0)
-        else:
+        if pref not in ["dog", "cat"]:
             return None
+        
+        temp = Queue()
+        result = None
 
-    def _dequeue_cat(self):
-     
-        if self.cat_queue:
-            return self.cat_queue.pop(0)
-        elif self.dog_queue:
-            return self.dog_queue.pop(0)
-        else:
-            return None
-
-
-# Example usage:
-shelter = AnimalShelter()
-
-# Enqueue
-shelter.enqueue(Animal("dog", "Max"))
-shelter.enqueue(Animal("cat", "Whiskers"))
-shelter.enqueue(Animal("dog", "Buddy"))
-shelter.enqueue(Animal("cat", "Mittens"))
-
-# Dequeue
-dog = shelter.dequeue("dog")
-if dog:
-    print(f"Adopted dog: {dog.name}")
-
-cat = shelter.dequeue("cat")
-if cat:
-    print(f"Adopted cat: {cat.name}")
-
-# Dequeue an animal without specifying preference
-animal = shelter.dequeue("unknown")
-if animal:
-    print(f"Adopted animal: {animal.species} - {animal.name}")
-else:
-    print("No preference specified. Adopted oldest animal in the shelter.")
+        while not self.queue.is_empty():
+            current = self.queue.peek()
+            if current.species == pref and result == None:
+                result = current
+                self.queue.dequeue()
+            
+            else:
+                temp.enqueue(self.queue.dequeue())
+        self.queue = temp
+        return result

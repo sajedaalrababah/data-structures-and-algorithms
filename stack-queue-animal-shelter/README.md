@@ -16,4 +16,4 @@ pref can be either "dog" or "cat"
 Return: either a dog or a cat, based on preference.
 If pref is not "dog" or "cat" then return null.
 
-![stack_and_queue_AnimalShelter_WhiteBoard.png](./stack_and_queue_AnimalShelter_WhiteBoard.png)
+![animal.png](./animal.jpg.jpg)
