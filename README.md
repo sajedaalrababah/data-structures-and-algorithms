@@ -8,3 +8,4 @@
 | 4 | [stack-queue-animal-shelter](./stack-queue-animal-shelter/README.md) |
 | 5 | [linked-list](./linked-list/README.md) |
 | 6 | [stack_and_queue](./stack_and_queue/README.md) |
+| 6 | [stack_queue_brackets](./stack_queue_brackets/README.md) |
