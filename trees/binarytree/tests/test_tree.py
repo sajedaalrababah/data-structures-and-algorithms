@@ -1,32 +1,63 @@
 import pytest
 from binarytre import BinaryTree, BinarySearchTree,Node
 
-@pytest.fixture
-def binary_tree():
-    return BinaryTree()
+def test_instantiating_empty_tree():
+    tree = BinaryTree()
+    assert tree.root is None
 
-@pytest.fixture
-def binary_search_tree():
-    return BinarySearchTree()
 
-def test_empty_tree(binary_tree):
-    assert binary_tree.root is None
+def test_instantiating_tree_with_single_root_node():
+    tree = BinaryTree()
+    root_node = Node(1)
+    tree.root = root_node
+    assert tree.root.value == 1
 
-def test_single_node_tree(binary_tree):
-    binary_tree.root = Node(1)
-    assert binary_tree.root.value == 1
 
-def test_binary_search_tree_add_child_nodes(binary_search_tree):
-    binary_search_tree.add(10)
-    binary_search_tree.add(5)
-    binary_search_tree.add(15)
+def test_adding_left_and_right_child_to_binary_search_tree():
+    tree = BinarySearchTree()
+    tree.add(2)
+    tree.add(1)
+    tree.add(3)
+    assert tree.root.value == 2
+    assert tree.root.left.value == 1
+    assert tree.root.right.value == 3
 
-    assert binary_search_tree.root.value == 10
-    assert binary_search_tree.root.left.value == 5
-    assert binary_search_tree.root.right.value == 15
 
-def test_preorder_traversal(binary_tree):
-    binary_tree.root = Node(1)
-    binary_tree.root.left = Node(2)
-    binary_tree.root.right = Node(3)
-    binary_tree
+def test_pre_order_traversal():
+    tree = BinarySearchTree()
+    tree.add(2)
+    tree.add(1)
+    tree.add(3)
+    assert tree.pre_order() == [2, 1, 3]
+
+
+def test_in_order_traversal():
+    tree = BinarySearchTree()
+    tree.add(2)
+    tree.add(1)
+    tree.add(3)
+    assert tree.in_order() == [1, 2, 3]
+
+
+def test_post_order_traversal():
+    tree = BinarySearchTree()
+    tree.add(2)
+    tree.add(1)
+    tree.add(3)
+    assert tree.post_order() == [1, 3, 2]
+
+
+def test_contains_method_with_existing_value():
+    tree = BinarySearchTree()
+    tree.add(4)
+    tree.add(2)
+    tree.add(6)
+    assert tree.contains(2) is True
+
+
+def test_contains_method_with_non_existing_value():
+    tree = BinarySearchTree()
+    tree.add(4)
+    tree.add(2)
+    tree.add(6)
+    assert tree.contains(5) is False

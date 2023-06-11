@@ -5,114 +5,75 @@ class Node:
         self.right = None
 
 
-
 class BinaryTree:
     def __init__(self):
         self.root = None
+    
+    def __pre_order_helper(self, node, result):
+        if node:
+            result.append(node.value)
+            self.__pre_order_helper(node.left, result)
+            self.__pre_order_helper(node.right, result)
 
-    def preorder_traversal(self, node):
-        """
-        Perform a preorder traversal of the binary tree.
+    def __in_order_helper(self, node, result):
+        if node:
+            self.__in_order_helper(node.left, result)
+            result.append(node.value)
+            self.__in_order_helper(node.right, result)
 
-        Returns:
-            list: List of values in preorder traversal order.
-        """
+    def __post_order_helper(self, node, result):
+        if node:
+            self.__post_order_helper(node.left, result)
+            self.__post_order_helper(node.right, result)
+            result.append(node.value)
 
-        if node is None:
-            return []
-        result = [node.value]
-        result += self.preorder_traversal(node.left)
-        result += self.preorder_traversal(node.right)
+    def pre_order(self):
+        result = []
+        self.__pre_order_helper(self.root, result)
         return result
 
-    def inorder_traversal(self, node):
-        """
-        Perform an inorder traversal of the binary tree.
 
-        Returns:
-            list: List of values in inorder traversal order.
-        """
-
-        if node is None:
-            return []
-        result = self.inorder_traversal(node.left)
-        result.append(node.value)
-        result += self.inorder_traversal(node.right)
+    def in_order(self):
+        result = []
+        self.__in_order_helper(self.root, result)
         return result
 
-    def postorder_traversal(self, node):
-        """
-        Perform a postorder traversal of the binary tree.
 
-        Returns:
-            list: List of values in postorder traversal order.
-        """
-
-        if node is None:
-            return []
-        result = self.postorder_traversal(node.left)
-        result += self.postorder_traversal(node.right)
-        result.append(node.value)
+    def post_order(self):
+        result = []
+        self.__post_order_helper(self.root, result)
         return result
-
 
 
 class BinarySearchTree(BinaryTree):
-    def add(self, value):
-        """
-        Add a new node with the given value in the correct location in the binary search tree.
-
-        Returns:
-            None
-        """
-
-        if self.root is None:
-            self.root = Node(value)
-        else:
-            self._add_helper(self.root, value)
-
     def _add_helper(self, node, value):
-        """
-        Recursive helper function to add a new node with the given value in the correct location.
-
-        Returns:
-            None
-        """
-
         if value < node.value:
-            if node.left is None:
+            if not node.left:
                 node.left = Node(value)
             else:
                 self._add_helper(node.left, value)
         else:
-            if node.right is None:
+            if not node.right:
                 node.right = Node(value)
             else:
                 self._add_helper(node.right, value)
 
-    def contains(self, value):
-        """
-        Check if the given value is present in the binary search tree.
-
-        Returns:
-            bool: True if the value is found, False otherwise.
-        """
-
-        return self._contains_helper(self.root, value)
-
     def _contains_helper(self, node, value):
-        """
-        Recursive helper function to check if the given value is present in the binary search tree.
-
-        Returns:
-            bool: True if the value is found, False otherwise.
-        """
-
-        if node is None:
+        if not node:
             return False
-        if value == node.value:
+        if node.value == value:
             return True
         if value < node.value:
             return self._contains_helper(node.left, value)
         else:
             return self._contains_helper(node.right, value)
+        
+    def add(self, value):
+        if not self.root:
+            self.root = Node(value)
+        else:
+            self._add_helper(self.root, value)
+
+
+    def contains(self, value):
+        return self._contains_helper(self.root, value)
