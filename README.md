@@ -10,4 +10,4 @@
 | 6 | [stack_and_queue](./stack_and_queue/README.md) |
 | 7| [stack_queue_brackets](./stack_queue_brackets/README.md) |
 | 8| [trees](./trees/binarytree/README.md) |
-| 8| [max-trees](./trees/max/README.md) |
+| 8| [max-trees](./trees/maxtree/README.md) |
