@@ -9,9 +9,11 @@ def hashmap_left_join(table1: Hashtable, table2: Hashtable):
         table2 (Hashtable): Hashtable to join with.
 
     Returns:
-        list[list]: List of lists containing the key, value from table1, and value from table2.
+        Hashtable: Hashtable containing the left join result with keys from table1 and values from both tables.
     """
-    arr = []
+    result = Hashtable()
     for key in table1.keys():
-        arr.append([key, table1.get(key), table2.get(key)])
-    return arr
+        value1 = table1.get(key)
+        value2 = table2.get(key)
+        result.set(key, [value1, value2])
+    return result
