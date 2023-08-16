@@ -21,6 +21,7 @@
 |  32     | [tree intersection](./tree_intersection/tree_intersection.md)     |
 |  33     | [left join](./hashmap_left_join/README.md)     |
 |  35     | [graph](./graphs/README.md)     |
-|  36     | [breadth first](./graph/breadth_first.md)     |
-|  37     | [graph business trip](./graph/graph_business_trip.md)     |
-  
+|  36     | [breadth first](./graphs/breadth_first.md)     |
+|  37     | [graph business trip](./graphs/busssnis.md)     |
+|  38   | [graph depth](./graphs/graph_depthFirst.md)     |
+
