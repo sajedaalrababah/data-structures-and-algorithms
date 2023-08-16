@@ -1,6 +1,7 @@
 from graphs import Graph
 
 
+
 def graph_business_trip(graph: Graph[str], cities: list[str]):
     cost = 0
     for i in range(len(cities) - 1):

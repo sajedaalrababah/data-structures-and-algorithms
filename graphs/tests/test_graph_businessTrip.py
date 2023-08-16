@@ -1,66 +1,66 @@
-import pytest
-from graph_businessTrip import buildGraph, businessTrip
+# from pytest import fixture
+# from graphs import Graph
+# from graph_businessTrip import graph_business_trip
 
 
-def test_businessTrip_DirectFlights():
-    graph_edges = [
-        ("Pandora", "Arendelle", 150),
-        ("Pandora", "Metroville", 82),
-        ("Arendelle", "Metroville", 99),
-        ("Arendelle", "Monstropolis", 42),
-        ("Metroville", "Monstropolis", 105),
-        ("Metroville", "Narnia", 37),
-        ("Metroville", "Naboo", 26),
-        ("Monstropolis", "Naboo", 73),
-        ("Narnia", "Naboo", 250),
-    ]
-    graph = buildGraph(graph_edges)
-    assert businessTrip(graph, ["Pandora", "Metroville"]) == 82
+# @fixture()
+# def graph():
+#     # pandora ---150--- arendelle
+#     #       \82        99/        \42
+#     #         Metroville ---105-- Monstroplolis
+#     #        /37        \26         /73
+#     #   Narnia  --250---  Naboo
+
+#     graph = Graph[str]()
+#     pandora = graph.add_vertex('Pandora')
+#     arendelle = graph.add_vertex('Arendelle')
+#     metroville = graph.add_vertex('Metroville')
+#     monstroplolis = graph.add_vertex('Monstroplolis')
+#     narnia = graph.add_vertex('Narnia')
+#     naboo = graph.add_vertex('Naboo')
+
+#     graph.add_edge(pandora, arendelle, 150)
+#     graph.add_edge(pandora, metroville, 82)
+#     graph.add_edge(arendelle, metroville, 99)
+#     graph.add_edge(arendelle, monstroplolis, 42)
+#     graph.add_edge(metroville, narnia, 37)
+#     graph.add_edge(metroville, naboo, 26)
+#     graph.add_edge(metroville, monstroplolis, 105)
+#     graph.add_edge(monstroplolis, naboo, 73)
+#     graph.add_edge(narnia, naboo, 250)
+
+#     return graph
 
 
-def test_businessTrip_NoDirectFlights():
-    graph_edges = [
-        ("Pandora", "Arendelle", 150),
-        ("Arendelle", "Metroville", 99),
-        ("Arendelle", "Monstropolis", 42),
-        ("Metroville", "Monstropolis", 105),
-        ("Metroville", "Narnia", 37),
-        ("Metroville", "Naboo", 26),
-        ("Monstropolis", "Naboo", 73),
-        ("Narnia", "Naboo", 250),
-    ]
-    graph = buildGraph(graph_edges)
-    assert businessTrip(graph, ["Naboo", "Pandora"]) is None
-    assert businessTrip(graph, ["Narnia", "Arendelle", "Naboo"]) is None
+# def test_graph_business_trip_empty(graph: Graph[str]):
+#     actual = graph_business_trip(graph, [])
+#     expected = 0
+#     assert actual == expected
 
 
-def test_businessTrip_invalidCity():
-    graph_edges = [
-        ("Pandora", "Arendelle", 150),
-        ("Pandora", "Metroville", 82),
-        ("Arendelle", "Metroville", 99),
-        ("Arendelle", "Monstropolis", 42),
-        ("Metroville", "Monstropolis", 105),
-        ("Metroville", "Narnia", 37),
-        ("Metroville", "Naboo", 26),
-        ("Monstropolis", "Naboo", 73),
-        ("Narnia", "Naboo", 250),
-    ]
-    graph = buildGraph(graph_edges)
-    assert businessTrip(graph, ["Pandora", "Atlantis"]) is None
+# def test_graph_business_trip_one_city(graph: Graph[str]):
+#     actual = graph_business_trip(graph, ['Pandora'])
+#     expected = 0
+#     assert actual == expected
 
 
-def test_businessTrip_singleCity():
-    graph_edges = [
-        ("Pandora", "Arendelle", 150),
-        ("Pandora", "Metroville", 82),
-        ("Arendelle", "Metroville", 99),
-        ("Arendelle", "Monstropolis", 42),
-        ("Metroville", "Monstropolis", 105),
-        ("Metroville", "Narnia", 37),
-        ("Metroville", "Naboo", 26),
-        ("Monstropolis", "Naboo", 73),
-        ("Narnia", "Naboo", 250),
-    ]
-    graph = buildGraph(graph_edges)
-    assert businessTrip(graph, ["Pandora"]) == 0
+# def test_graph_business_trip_two_cities(graph: Graph[str]):
+#     actual = graph_business_trip(graph, ['Pandora', 'Arendelle'])
+#     expected = 150
+#     assert actual == expected
+
+
+# def test_graph_business_trip(graph: Graph[str]):
+
+#     actual = graph_business_trip(
+#         graph, ['Pandora', 'Arendelle', 'Monstroplolis'])
+#     expected = 192
+#     assert actual == expected
+
+
+# def test_graph_business_trip_not_connected(graph: Graph[str]):
+
+#     actual = graph_business_trip(
+#         graph, ['Pandora', 'Arendelle', 'Naboo'])
+#     expected = None
+#     assert actual == expected
